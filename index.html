@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>My first Vue page</title>
+	  <style type="text/css">
+	  	.bgRed {
+	  		background-color: red
+	  	}
+	  	img {
+	  		width: 300px;
+	  	}
+	  </style>
+	</head>
+	<body>
+		<div id="app_1">
+		  <div v-bind:class="class_1">{{ message }}</div>
+		  <!-- <div v-bind:[attribute]="[Vue data]"></div> -->
+		  <img v-bind:src="url">
+		  <div v-if="message.includes('Hello')">'Hello' is texted in this message.</div>
+		  <div v-for="x in arr">{{x.name}}</div>
+		  <div>{{count}}</div>
+		  <button v-on:click="count++">Click Me</button>
+		  <form v-on:submit.prevent="add">
+		  	<p>Add Item</p>
+		  	<p>Item: <input type="text" required="required" v-model="input_name"></p>
+		  	<p>Color: <input type="text" v-model="input_color"></p>
+		  	<button type="submit">Add</button>
+		  </form>
+		</div>
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<script>
+	  const app_1 = Vue.createApp({
+	   data() {
+	    return {
+	     message : "Hello World!",
+	     class_1 : "bgRed",
+	     url : "back.png",
+	     arr : [
+	     	{name: 'apple', color: 'red'},
+	     	{name: 'orange', color: 'yellow'},
+	     	{name: 'grape', color: 'purple'}
+	     ],
+	     count : 0,
+	     input_name : null,
+	     input_color : null
+	    }
+	   },
+	   methods : {
+	     	add() {
+	     		let item = {
+	     			name: this.input_name,
+	     			color: this.input_color
+	     		}
+	     		this.arr.push(item)
+	     	}
+	     }
+	  })
+	  
+	  app_1.mount('#app_1')
+
+	</script>
+
+	</body>
+</html>
