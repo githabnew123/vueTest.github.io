@@ -1,4 +1,5 @@
 <template>
+  <api/>
   <button @click="value =! value">Click To Change Component</button>
   <component :is="active"></component>
   <h1>Food</h1>
