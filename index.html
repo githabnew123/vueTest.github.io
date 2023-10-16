@@ -1,88 +1,15 @@
 <!DOCTYPE html>
-<html>
-	<head>
-	  <title>My first Vue page</title>
-	  <style type="text/css">
-	  	.bgRed {
-	  		background-color: red
-	  	}
-	  	img {
-	  		width: 300px;
-	  	}
-	  </style>
-	</head>
-	<body>
-		<div id="app_1">
-		  <div v-bind:class="class_1">{{ message }}</div>
-		  <!-- <div v-bind:[attribute]="[Vue data]"></div> -->
-		  <img v-bind:src="url">
-		  <div v-if="message.includes('Hello')">'Hello' is texted in this message.</div>
-		  <div v-for="x in arr">{{x.name}}</div>
-		  <div>{{count}}</div>
-		  <button v-on:click="count++">Click Me</button>
-		  <form v-on:submit.prevent="add">
-		  	<p>Add Item</p>
-		  	<p>Item: <input type="text" required="required" v-model="input_name"></p>
-		  	<p>Color: <input type="text" v-model="input_color"></p>
-		  	<button type="submit">Add</button>
-		  	<label>
-		    <p>Type a valid e-mail address:</p>
-		    <input type="email" v-model="inpAddress">
-		  </label>
-		  <p v-bind:class="myClass"><code>{{ feedbackText }}</code></p> 
-		  </form>
-		  
-		</div>
-	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-	<script>
-	  const app_1 = Vue.createApp({
-	   data() {
-	    return {
-	     message : "Hello World!",
-	     class_1 : "bgRed",
-	     url : "back.png",
-	     arr : [
-	     	{name: 'apple', color: 'red'},
-	     	{name: 'orange', color: 'yellow'},
-	     	{name: 'grape', color: 'purple'}
-	     ],
-	     count : 0,
-	     input_name : null,
-	     input_color : null,
-	     inpAddress: '',
-         feedbackText: '',
-         myClass: 'invalid'
-	    }
-	   },
-	   watch: {
-	      inpAddress(newVal,oldVal) {
-	        if(!newVal.includes('@')){
-	          this.feedbackText = 'The e-mail address is NOT valid';
-	          this.myClass = 'invalid';
-	        }
-	        else if(!oldVal.includes('@') && newVal.includes('@')) {
-	          this.feedbackText = 'Perfect! You fixed it!';
-	          this.myClass = 'valid'
-	        }
-	        else {
-	          this.feedbackText = 'The e-mail address is valid :)';
-	        }
-	      }
-	    },
-	   methods : {
-	     	add() {
-	     		let item = {
-	     			name: this.input_name,
-	     			color: this.input_color
-	     		}
-	     		this.arr.push(item)
-	     	}
-	     }
-	  })
-	  
-	  app_1.mount('#app_1')
-
-	</script>
-
-	</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vite App</title>
+    <script type="module" crossorigin src="/assets/index-7105f7ba.js"></script>
+    <link rel="stylesheet" href="/assets/index-f3edf3d2.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    
+  </body>
 </html>
